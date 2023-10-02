@@ -1,4 +1,3 @@
-const mongoose = require("mongoose");
 const service = require("../service/UserSservice");
 
 const find = (req, res) => {

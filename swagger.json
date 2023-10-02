@@ -1,0 +1,66 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Api pizzaria",
+        "description": "API para gestão de pizzaria!",
+        "termsOfService": "http://localhost:3000",
+        "version": "1.0.0"
+    },
+    "server": [
+        {
+            "url": "http://localhost:3000/v1",
+            "description": "Api para Pizzaria"
+        }
+    ],
+    "paths": {
+       "/usuarios/find": {
+        "get": {
+            "summary": "Lista de usuarios",
+            "description": "Lista de todos os usuarios",
+            "tags": ["Usuarios"],
+            "responses": {
+                "401": {
+                    "description": "Não autorizado!"
+                },
+                "500": {
+                    "description": "Erro interno do servidor!"
+                },
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "items": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+       } 
+    },
+    "components": {
+        "schemas": {
+            "User": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "nome": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "senha": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

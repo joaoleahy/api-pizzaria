@@ -18,6 +18,23 @@ const find = (req, res) => {
 }
 
 const findAll = (req, res) => {
+    const { email } = req.query;
+
+    if (email) {
+        return service.findFromKeyAndValue('email', email)
+            .then((response) => {
+                if (response == null) {
+                    return res.status(404).send({ message: "Registro não encontrado!" });
+                }
+
+                return res.status(200).send(response);
+            })
+            .catch((error) => {
+                console.log(`Erro: ${error}`);
+                return res.status(500).send({ message: "Erro no servidor, tente novamente mais tarde!" });
+            });
+    }
+
     service.find()
         .then((response) => {
             return res.send(response);

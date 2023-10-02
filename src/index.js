@@ -1,8 +1,9 @@
 const express = require("express");
+const cors = require('cors');
 const swaggerUI = require("swagger-ui-express");
 const swaggerConfig = require("./swagger.json");
 
-const port = 3000;
+const port = 3001;
 const app = express();
 
 const database = require("./database/Database");
@@ -18,6 +19,8 @@ const product =  require("./router/ProductRouter");
 const order =  require("./router/OrderRouter");
 
 app.use(express.json());
+
+app.use(cors());
 
 app.use("/auth", auth);
 app.use("/users", user);

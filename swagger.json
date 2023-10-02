@@ -1,38 +1,157 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "Api pizzaria",
-        "description": "API para gestão de pizzaria!",
+        "title": "Pizzaria API",
+        "description": "API para gestão de pizzarias",
         "termsOfService": "http://localhost:3000",
         "version": "1.0.0"
     },
-    "server": [
+    "servers": [
         {
             "url": "http://localhost:3000/v1",
-            "description": "Api para Pizzaria"
+            "description": "API para gestão de pizzarias"
         }
     ],
     "paths": {
-       "/usuarios/find": {
-        "get": {
-            "summary": "Lista de usuarios",
-            "description": "Lista de todos os usuarios",
-            "tags": ["Usuarios"],
-            "responses": {
-                "401": {
-                    "description": "Não autorizado!"
+        "/auth/login": {
+            "post": {
+                "summary": "Generate user token",
+                "description": "Generate user token",
+                "tags": ["Login"],
+                "security": {
+                    "bearerAuth": []
                 },
-                "500": {
-                    "description": "Erro interno do servidor!"
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized!"
+                    },
+                    "500": {
+                        "description": "Internal Server Error!"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "items": {
+                                        "$ref": "#/components/schemas/User"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+       "/users/find": {
+            "get": {
+                "summary": "List of users",
+                "description": "List of all users",
+                "tags": ["Users"],
+                "security": {
+                    "bearerAuth": []
                 },
-                "200": {
-                    "description": "OK",
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "object",
-                                "items": {
-                                    "$ref": "#/components/schemas/User"
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized!"
+                    },
+                    "500": {
+                        "description": "Internal Server Error!"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "items": {
+                                        "$ref": "#/components/schemas/User"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/customers/find": {
+            "get": {
+                "summary": "List of customers",
+                "description": "List of all customers",
+                "tags": ["Customers"],
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized!"
+                    },
+                    "500": {
+                        "description": "Internal Server Error!"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Customer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/products/find": {
+            "get": {
+                "summary": "List of products",
+                "description": "List of all products",
+                "tags": ["Products"],
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized!"
+                    },
+                    "500": {
+                        "description": "Internal Server Error!"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Product"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/orders/find": {
+            "get": {
+                "summary": "List of orders",
+                "description": "List of all orders",
+                "tags": ["Orders"],
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized!"
+                    },
+                    "500": {
+                        "description": "Internal Server Error!"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Order"
+                                    }
                                 }
                             }
                         }
@@ -40,9 +159,15 @@
                 }
             }
         }
-       } 
     },
     "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        },
         "schemas": {
             "User": {
                 "type": "object",
@@ -50,14 +175,68 @@
                     "id": {
                         "type": "integer"
                     },
-                    "nome": {
+                    "name": {
                         "type": "string"
                     },
                     "email": {
                         "type": "string"
                     },
-                    "senha": {
+                    "password": {
                         "type": "string"
+                    }
+                }
+            },
+            "Customer": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "phoneNumber": {
+                        "type": "string"
+                    },
+                    "addresses": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "Product": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "price": {
+                        "type": "number"
+                    }
+                }
+            },
+            "Order": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "customerId": {
+                        "type": "integer"
+                    },
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
                     }
                 }
             }

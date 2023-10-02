@@ -37,12 +37,12 @@ const validaBody = (body) => {
         return { message: "Nome não foi informado!" };
     }
 
-    if (body.email == null) {
-        return { message: "E-mail não foi informado!" };
+    if (body.descricao == null) {
+        return { message: "Descricao não foi informado!" };
     }
 
-    if (body.senha == null) {
-        return { message: "Senha não foi informada!" };
+    if (body.preco == null) {
+        return { message: "Preço não foi informado!" };
     }
 
     return null;

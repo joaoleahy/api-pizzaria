@@ -64,8 +64,3 @@ Este projeto está licenciado sob a [Licença MIT](LICENSE).
 
 ---
 Feito com ❤️ por João Leahy (https://github.com/joaoleahy)
-```
-
-Substitua `sua-string-de-conexao-do-mongodb` pela string de conexão do seu banco de dados MongoDB e `sua-chave-secreta-para-o-jwt` por uma chave secreta para a geração de tokens JWT.
-
-Espero que isso ajude! Se você tiver mais perguntas ou precisar de assistência com qualquer outra coisa, sinta-se à vontade para perguntar. Boa sorte com o seu projeto!

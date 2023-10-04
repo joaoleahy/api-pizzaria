@@ -1,7 +1,7 @@
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");
 
-const secret = "f94if94i9sd1010";
+const secret = "4queijos";
 
 const loginService = (email) => User.findOne({ email });
 

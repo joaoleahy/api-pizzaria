@@ -6,11 +6,11 @@ const auth = (req, res) => {
     service.loginService(email)
         .then((usuario) => {
             if(!usuario) {
-                return res.status(404).send({ message: "Usuario não encontrado! Tente novamente!"});
+                return res.status(404).send({ message: "Credenciais incorretas! Tente novamente!"});
             }
 
             if(usuario.senha != senha) {
-                return res.status(404).send({ message: "Usuario não encontrado! Tente novamente!"});
+                return res.status(404).send({ message: "Senha inválida! Tente novamente!"});
             }
 
             const token = service.gerarTokenJWT(usuario);

@@ -1,6 +1,3 @@
-Claro, aqui está um exemplo de um arquivo README.md em Markdown para o seu repositório no GitHub:
-
-```markdown
 # API da Pizzaria
 
 Bem-vindo à API da Pizzaria! Esta API é desenvolvida para gerenciar clientes, pizzas e pedidos em uma pizzaria. Utiliza tecnologias modernas como Node.js e MongoDB para proporcionar funcionalidades robustas e eficientes.

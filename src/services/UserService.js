@@ -6,11 +6,11 @@ const findById = (value) => Users.findById(value);
 
 const findFromKeyAndValue = (key, value) => Users.find({ [key]: value });
 
-const create = (usuario) =>
-    Users.create(usuario);
+const create = (user) =>
+    Users.create(user);
 
-const findByIdAndUpdate = (id, usuario) =>
-    Users.findByIdAndUpdate(id, usuario, { returnDocument: "after" });
+const findByIdAndUpdate = (id, user) =>
+    Users.findByIdAndUpdate(id, user, { returnDocument: "after" });
 
 const findByIdAndRemove = (id) =>
     Users.findByIdAndRemove(id);

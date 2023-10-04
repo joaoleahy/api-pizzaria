@@ -1,202 +1,74 @@
-# Pizzaria API
+Claro, aqui está um exemplo de um arquivo README.md em Markdown para o seu repositório no GitHub:
 
-API para gestão de pizzarias. Esta API oferece endpoints para autenticação de usuários, listagem de usuários, clientes, produtos e pedidos.
+```markdown
+# API da Pizzaria
 
-## Endpoints
+Bem-vindo à API da Pizzaria! Esta API é desenvolvida para gerenciar clientes, pizzas e pedidos em uma pizzaria. Utiliza tecnologias modernas como Node.js e MongoDB para proporcionar funcionalidades robustas e eficientes.
 
-### Autenticação
+## Funcionalidades
 
-#### `POST /auth/login`
+- Autenticação de Usuários
+- Cadastro, Atualização, Listagem e Pesquisa de Clientes
+- Cadastro e Listagem de Pizzas
+- Montagem, Atualização, Listagem, Pesquisa e Exclusão de Pedidos
 
-Gera um token de usuário.
+## Pré-requisitos
 
-- **Requer Autenticação:** Sim
-- **Parâmetros:**
-  - Nenhum
-- **Respostas:**
-  - `200 OK`
-    - Corpo:
-      ```json
-      {
-        "id": "integer",
-        "name": "string",
-        "email": "string",
-        "password": "string"
-      }
-      ```
-  - `401 Unauthorized`
-    - Descrição: Não autorizado.
-  - `500 Internal Server Error`
-    - Descrição: Erro interno do servidor.
+Certifique-se de ter instalado em sua máquina:
 
-### Usuários
+- [Node.js](https://nodejs.org/)
+- [MongoDB](https://www.mongodb.com/)
 
-#### `GET /users/find`
+## Instalação
 
-Lista todos os usuários.
+1. Clone o repositório:
 
-- **Requer Autenticação:** Sim
-- **Parâmetros:**
-  - Nenhum
-- **Respostas:**
-  - `200 OK`
-    - Corpo:
-      ```json
-      {
-        "id": "integer",
-        "name": "string",
-        "email": "string",
-        "password": "string"
-      }
-      ```
-  - `401 Unauthorized`
-    - Descrição: Não autorizado.
-  - `500 Internal Server Error`
-    - Descrição: Erro interno do servidor.
-
-### Clientes
-
-#### `GET /customers/find`
-
-Lista todos os clientes.
-
-- **Requer Autenticação:** Não
-- **Parâmetros:**
-  - Nenhum
-- **Respostas:**
-  - `200 OK`
-    - Corpo:
-      ```json
-      {
-        "id": "integer",
-        "name": "string",
-        "phoneNumber": "string",
-        "addresses": [
-          {
-            // Objeto de endereço
-          }
-        ]
-      }
-      ```
-  - `401 Unauthorized`
-    - Descrição: Não autorizado.
-  - `500 Internal Server Error`
-    - Descrição: Erro interno do servidor.
-
-### Produtos
-
-#### `GET /products/find`
-
-Lista todos os produtos.
-
-- **Requer Autenticação:** Não
-- **Parâmetros:**
-  - Nenhum
-- **Respostas:**
-  - `200 OK`
-    - Corpo:
-      ```json
-      {
-        "id": "integer",
-        "name": "string",
-        "description": "string",
-        "price": "number"
-      }
-      ```
-  - `401 Unauthorized`
-    - Descrição: Não autorizado.
-  - `500 Internal Server Error`
-    - Descrição: Erro interno do servidor.
-
-### Pedidos
-
-#### `GET /orders/find`
-
-Lista todos os pedidos.
-
-- **Requer Autenticação:** Não
-- **Parâmetros:**
-  - Nenhum
-- **Respostas:**
-  - `200 OK`
-    - Corpo:
-      ```json
-      {
-        "id": "integer",
-        "customerId": "integer",
-        "items": [
-          {
-            // Objeto de item do pedido
-          }
-        ]
-      }
-      ```
-  - `401 Unauthorized`
-    - Descrição: Não autorizado.
-  - `500 Internal Server Error`
-    - Descrição: Erro interno do servidor.
-
-## Schemas
-
-### User
-
-```json
-{
-  "id": "integer",
-  "name": "string",
-  "email": "string",
-  "password": "string"
-}
+```sh
+git clone https://github.com/seu-usuario/api-pizzaria.git
 ```
 
-### Customer
+2. Instale as dependências:
 
-```json
-{
-  "id": "integer",
-  "name": "string",
-  "phoneNumber": "string",
-  "addresses": [
-    {
-      // Objeto de endereço
-    }
-  ]
-}
+```sh
+cd api-pizzaria
+npm install
 ```
 
-### Product
+3. Configure as variáveis de ambiente. Crie um arquivo `.env` na raiz do projeto e adicione as seguintes variáveis:
 
-```json
-{
-  "id": "integer",
-  "name": "string",
-  "description": "string",
-  "price": "number"
-}
+```env
+MONGODB_URI=sua-string-de-conexao-do-mongodb
+JWT_SECRET=sua-chave-secreta-para-o-jwt
 ```
 
-### Order
+4. Inicie o servidor:
 
-```json
-{
-  "id": "integer",
-  "customerId": "integer",
-  "items": [
-    {
-      // Objeto de item do pedido
-    }
-  ]
-}
+```sh
+npm start
 ```
 
-## Segurança
+A API estará disponível em `http://localhost:3000`.
 
-### Bearer Token
+## Documentação da API
 
-Mecanismo de autenticação usando Token JWT.
+A documentação detalhada da API pode ser acessada através do Swagger. Após iniciar o servidor, acesse:
 
-- **Tipo:** HTTP Bearer Token
-- **Esquema:** Bearer
-- **Formato:** JWT
+```
+http://localhost:3000/api-docs
+```
 
-Para mais informações, consulte a documentação da API em [http://localhost:3000](http://localhost:3000).
+## Contribuição
+
+Contribuições são bem-vindas! Por favor, crie uma `issue` para discutir sobre as mudanças que você gostaria de fazer no projeto.
+
+## Licença
+
+Este projeto está licenciado sob a [Licença MIT](LICENSE).
+
+---
+Feito com ❤️ por João Leahy (https://github.com/joaoleahy)
+```
+
+Substitua `sua-string-de-conexao-do-mongodb` pela string de conexão do seu banco de dados MongoDB e `sua-chave-secreta-para-o-jwt` por uma chave secreta para a geração de tokens JWT.
+
+Espero que isso ajude! Se você tiver mais perguntas ou precisar de assistência com qualquer outra coisa, sinta-se à vontade para perguntar. Boa sorte com o seu projeto!

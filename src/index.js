@@ -12,11 +12,11 @@ database();
 
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerConfig));
 
-const auth =  require("./router/AuthRouter");
-const user =  require("./router/UserRouter");
-const costumer =  require("./router/CostumerRouter");
-const product =  require("./router/ProductRouter");
-const order =  require("./router/OrderRouter");
+const auth =  require("./routers/AuthRouter");
+const user =  require("./routers/UserRouter");
+const costumer =  require("./routers/CostumerRouter");
+const product =  require("./routers/ProductRouter");
+const order =  require("./routers/OrderRouter");
 
 app.use(express.json());
 

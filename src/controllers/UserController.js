@@ -1,4 +1,4 @@
-const service = require("../service/UserSservice");
+const service = require("../services/UserService");
 
 const find = (req, res) => {
     const { id } = req.params;
